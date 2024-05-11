@@ -101,10 +101,12 @@ var Temporal = function(model, sequelize, temporalOptions){
   if (temporalOptions.full) {
     model.addHook('afterCreate', insertHook);
     model.addHook('afterUpdate', insertHook);
+    model.addHook('afterUpsert', insertHook);
     model.addHook('afterDestroy', insertHook);
     model.addHook('afterRestore', insertHook);
   } else {
     model.addHook('beforeUpdate', insertHook);
+    model.addHook('beforeUpsert', insertHook);
     model.addHook('beforeDestroy', insertHook);
   }
 
